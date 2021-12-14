@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('weather/report')->middleware('request.logging')->group(function () {
+    Route::get('/pdf', 'ReportController@getPdf');
+    Route::get('/json', 'ReportController@getJson');
+    Route::get('/text', 'ReportController@getText');
+    Route::get('/html', 'ReportController@getHtml');
 });

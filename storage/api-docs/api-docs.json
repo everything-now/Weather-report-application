@@ -1,0 +1,108 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Weather report API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/weather/report/pdf": {
+            "get": {
+                "operationId": "f77ac9725c0c3c846b2c80f45c2cfc0c",
+                "parameters": [
+                    {
+                        "name": "airports[]",
+                        "in": "query",
+                        "description": "List of airports code",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Download weather report pdf file"
+                    }
+                }
+            }
+        },
+        "/api/weather/report/html": {
+            "get": {
+                "operationId": "0e3e0dde8e48974228f8a0e8b94310c8",
+                "parameters": [
+                    {
+                        "name": "airports[]",
+                        "in": "query",
+                        "description": "List of airports code",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get weather report in html format"
+                    }
+                }
+            }
+        },
+        "/api/weather/report/json": {
+            "get": {
+                "operationId": "83f0b803478878bb95c474f7f85f96ef",
+                "parameters": [
+                    {
+                        "name": "airports[]",
+                        "in": "query",
+                        "description": "List of airports code",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get weather report in json format"
+                    }
+                }
+            }
+        },
+        "/api/weather/report/text": {
+            "get": {
+                "operationId": "7f5d08631f90d06fbc20a07c6a22ad5d",
+                "parameters": [
+                    {
+                        "name": "airports[]",
+                        "in": "query",
+                        "description": "List of airports code",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get weather report in raw format"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
