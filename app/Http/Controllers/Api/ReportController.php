@@ -121,9 +121,7 @@ class ReportController extends Controller
             $metarRepository = new MetarRepository;
             $observationData = $metarRepository->getDataByCode($airportCode);
 
-            $observation = new MetarObservationDecoder($airportCode, $observationData);
-
-            $dataList[] = $observation;
+            $dataList[] = new MetarObservationDecoder($airportCode, $observationData);
         }
 
         return $dataList;
