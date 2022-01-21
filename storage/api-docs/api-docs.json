@@ -5,8 +5,87 @@
         "version": "0.1"
     },
     "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Login",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Register",
+                "operationId": "register",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    }
+                }
+            }
+        },
         "/api/weather/report/pdf": {
             "get": {
+                "tags": [
+                    "reports"
+                ],
                 "operationId": "f77ac9725c0c3c846b2c80f45c2cfc0c",
                 "parameters": [
                     {
@@ -24,13 +103,26 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Download weather report pdf file"
+                        "description": "Download weather report pdf file",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
             }
         },
         "/api/weather/report/html": {
             "get": {
+                "tags": [
+                    "reports"
+                ],
                 "operationId": "0e3e0dde8e48974228f8a0e8b94310c8",
                 "parameters": [
                     {
@@ -48,13 +140,26 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get weather report in html format"
+                        "description": "Get weather report in html format",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
             }
         },
         "/api/weather/report/json": {
             "get": {
+                "tags": [
+                    "reports"
+                ],
                 "operationId": "83f0b803478878bb95c474f7f85f96ef",
                 "parameters": [
                     {
@@ -72,13 +177,26 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Get weather report in json format"
+                        "description": "Get weather report in json format",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
             }
         },
         "/api/weather/report/text": {
             "get": {
+                "tags": [
+                    "reports"
+                ],
                 "operationId": "7f5d08631f90d06fbc20a07c6a22ad5d",
                 "parameters": [
                     {
@@ -97,6 +215,29 @@
                 "responses": {
                     "200": {
                         "description": "Get weather report in raw format"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://weather-report.env/oauth/authorize",
+                        "tokenUrl": "http://weather-report.env/oauth/token",
+                        "refreshUrl": "http://weather-report.env/token/refresh",
+                        "scopes": []
                     }
                 }
             }

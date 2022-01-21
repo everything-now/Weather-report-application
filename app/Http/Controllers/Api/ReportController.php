@@ -10,6 +10,10 @@ class ReportController extends Controller
 {
     /**
      * @OA\Get(
+     *     tags={"reports"},
+     *     security={
+     *          {"passport": {}},
+     *     },
      *     path="/api/weather/report/pdf",
      *     @OA\Parameter(
      *         name="airports[]",
@@ -20,7 +24,7 @@ class ReportController extends Controller
      *             @OA\Items(type="string")
      *         )
      *     ),
-     *     @OA\Response(response="200", description="Download weather report pdf file")
+     *     @OA\Response(response="200", description="Download weather report pdf file", @OA\JsonContent())
      * )
      */
     public function getPdf()
@@ -37,6 +41,10 @@ class ReportController extends Controller
 
     /**
      * @OA\Get(
+     *     tags={"reports"},
+     *     security={
+     *          {"passport": {}},
+     *     },
      *     path="/api/weather/report/html",
      *     @OA\Parameter(
      *         name="airports[]",
@@ -47,7 +55,7 @@ class ReportController extends Controller
      *             @OA\Items(type="string")
      *         )
      *     ),
-     *     @OA\Response(response="200", description="Get weather report in html format")
+     *     @OA\Response(response="200", description="Get weather report in html format", @OA\JsonContent())
      * )
      */
     public function getHtml()
@@ -62,6 +70,10 @@ class ReportController extends Controller
 
     /**
      * @OA\Get(
+     *     tags={"reports"},
+     *     security={
+     *          {"passport": {}},
+     *     },
      *     path="/api/weather/report/json",
      *     @OA\Parameter(
      *         name="airports[]",
@@ -72,7 +84,7 @@ class ReportController extends Controller
      *             @OA\Items(type="string")
      *         )
      *     ),
-     *     @OA\Response(response="200", description="Get weather report in json format")
+     *     @OA\Response(response="200", description="Get weather report in json format", @OA\JsonContent())
      * )
      */
     public function getJson()
@@ -85,6 +97,10 @@ class ReportController extends Controller
 
     /**
      * @OA\Get(
+     *     tags={"reports"},
+     *     security={
+     *          {"passport": {}},
+     *     },
      *     path="/api/weather/report/text",
      *     @OA\Parameter(
      *         name="airports[]",

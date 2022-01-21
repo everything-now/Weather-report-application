@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('weather/report')->middleware('request.logging')->group(function () {
+Route::post('/login', 'LoginController@login')->name('login');
+Route::post('/register', 'LoginController@register')->name('register');
+
+Route::prefix('weather/report')->middleware(['request.logging', 'auth:api'])->group(function () {
     Route::get('/pdf', 'ReportController@getPdf');
     Route::get('/json', 'ReportController@getJson');
     Route::get('/text', 'ReportController@getText');
