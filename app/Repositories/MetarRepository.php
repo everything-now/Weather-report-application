@@ -18,11 +18,12 @@ class MetarRepository
     public function __construct($client = null)
     {
         if (!$client) {
-            $this->client = new Client([
+            $client = new Client([
                 'base_uri' => config('metar.base_uri'),
             ]);
         }
 
+        $this->client = $client;
         $this->log = app('log');
         $this->cache = app('cache');
     }
