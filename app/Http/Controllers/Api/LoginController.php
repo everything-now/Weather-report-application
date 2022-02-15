@@ -64,7 +64,7 @@ class LoginController extends Controller
         $token->accessToken->save();
 
         return response()->json([
-            'token_type' => 'Bearer',
+            'token_type' => 'Personal Access Token',
             'token' => $token->accessToken->token,
         ], 200);
     }
@@ -113,7 +113,7 @@ class LoginController extends Controller
         $token->accessToken->save();
 
         return response()->json([
-            'token_type' => 'Bearer',
+            'token_type' => 'Personal Access Token',
             'token' => $token->accessToken->token,
         ], 201);
     }

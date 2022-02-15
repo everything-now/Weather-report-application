@@ -8,6 +8,13 @@ use App\Services\MetarObservationDecoder;
 
 class ReportController extends Controller
 {
+    private $metarClient;
+
+    public function __construct($metarClient = null)
+    {
+        $this->metarClient = $metarClient;
+    }
+
     /**
      * @OA\Get(
      *     tags={"reports"},
@@ -134,7 +141,7 @@ class ReportController extends Controller
         $dataList = [];
 
         foreach ($airports as $airportCode) {
-            $metarRepository = new MetarRepository;
+            $metarRepository = new MetarRepository($this->metarClient);
             $observationData = $metarRepository->getDataByCode($airportCode);
 
             $dataList[] = new MetarObservationDecoder($airportCode, $observationData);
