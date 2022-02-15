@@ -32,7 +32,8 @@ php artisan l5-swagger:generate
 
 Open home page of application to get swagger documentation.
 
-Or use web http://weather-report-app.medilabs.space/\
+Or use web http://weather-report-app.medilabs.space/
+
 Oauth credentials:\
 username: login@test.com\
 password: app_login_pass\
